@@ -1,8 +1,7 @@
+import { Field, Form, Formik } from 'formik';
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from "yup";
-import { SignupSchema } from '../validations/SignupValidation';
 import { useNavigate } from 'react-router-dom';
+import { SignupSchema } from '../validations/SignupValidation';
 
 const SignUpForm222 = () => {
 
@@ -21,7 +20,8 @@ const SignUpForm222 = () => {
             email: '',
             phoneNumber: '',
             password: '',
-            confirmPassword: ''
+            confirmPassword: '',
+            tandc: false
           }}
           validationSchema={SignupSchema}
           onSubmit={values => {
@@ -29,7 +29,9 @@ const SignUpForm222 = () => {
             console.log(values);
             const userData = values
             console.log('userData-->', userData);
-            navigate('/barchartpage')
+            alert('Account Created Successfully')
+
+            navigate('/barchartpage', { state: { userData } })
           }}
         >
           {({ errors, touched }) => (
@@ -66,6 +68,15 @@ const SignUpForm222 = () => {
               <Field className='border-2 border-gray-300 rounded-lg p-2 w-96' name="confirmPassword" type="password" placeholder='Confirm Your Password' />
               {errors.confirmPassword && touched.confirmPassword ? (
                 <span className='text-red-500'>{errors.confirmPassword}</span>
+              ) : null
+              }
+
+              <div className='space-x-2'>
+                <Field className='border-2 border-gray-300 rounded-lg p-2' name="tandc" type="checkbox" />
+                <label className='text-gray-500'>I've Read & Agree Terms & Conditions</label>
+              </div>
+              {errors.tandc ? (
+                <span className='text-red-500'>{errors.tandc}</span>
               ) : null
               }
 
