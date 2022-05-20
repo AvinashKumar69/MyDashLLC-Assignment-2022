@@ -29,7 +29,7 @@ const SignUpForm222 = () => {
             console.log(values);
             const userData = values
             console.log('userData-->', userData);
-            alert('Account Created Successfully')
+            alert('Account Created Successfully!')
 
             navigate('/barchartpage', { state: { userData } })
           }}
@@ -75,7 +75,7 @@ const SignUpForm222 = () => {
                 <Field className='border-2 border-gray-300 rounded-lg p-2' name="tandc" type="checkbox" />
                 <label className='text-gray-500'>I've Read & Agree Terms & Conditions</label>
               </div>
-              {errors.tandc ? (
+              {errors.tandc && touched.tandc ? (
                 <span className='text-red-500'>{errors.tandc}</span>
               ) : null
               }
